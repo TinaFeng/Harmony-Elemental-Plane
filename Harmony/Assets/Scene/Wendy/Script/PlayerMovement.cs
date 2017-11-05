@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    // Player
     private Rigidbody2D Player;
-	// Use this for initialization
+    // Speed
+    public float MaxSpeed = 2.0f;
+    // Jump Force
+    public float JumpForce = 0.0000000003f;
+
 	void Start ()
     {
         Player = gameObject.GetComponent<Rigidbody2D>();
@@ -15,11 +20,12 @@ public class PlayerMovement : MonoBehaviour
 	void FixedUpdate ()
     {
         float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Mathf.Abs(Input.GetAxis("Vertical"));
-        Player.velocity = new Vector2(horizontal, 0);
-        if (vertical >= 1)
+        // float vertical = Mathf.Abs(Input.GetAxis("Vertical"));
+        Player.velocity = new Vector2(horizontal * MaxSpeed, Player.velocity.y);
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Player.velocity = new Vector2(horizontal, 0);
+            Player.AddForce(Vector2.up * JumpForce);
         }
         
 	}

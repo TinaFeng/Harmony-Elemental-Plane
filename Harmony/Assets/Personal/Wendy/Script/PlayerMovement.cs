@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
     // Jump Force
     public float JumpForce;
     // Whether on ground
-    public bool IsOnGround;
+    private RaycastHit2D Hit;
+    private bool IsGround = true;
 
     void Start ()
     {
@@ -24,13 +25,14 @@ public class PlayerMovement : MonoBehaviour
         Player.velocity = new Vector2(horizontal * MaxSpeed, Player.velocity.y);
 
         // Jump
-        IsOnGround = Physics.Raycast(Player.position, new Vector3(0,-1, -0.009084969f)); //?
+        Hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y-0.123213f), Vector2.down,0.001f);
+        IsGround = (Hit.collider != null);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && IsGround == true) 
         {
             Player.AddForce(Vector2.up * JumpForce);
         }
-        
-	}
+
+    }
 
 }

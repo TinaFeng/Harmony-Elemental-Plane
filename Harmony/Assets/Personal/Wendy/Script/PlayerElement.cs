@@ -11,18 +11,30 @@ public class PlayerElement : MonoBehaviour
     private bool ElementOn = false;
 
     // Key to use elements and switch 
-    public KeyCode ElementKey;
-
-    // Element
-    public float AirSpeedChange;
+    public KeyCode ElementKey1;
+    public KeyCode ElementKey2;
+    public KeyCode ElementKey3;
+    public KeyCode ElementKey4;
     private int ElementNumber;
+
+    // ElementAir
+    public float AirSpeedChange;
+
+    // ElementStone
+    public GameObject Stone;
+    public Vector2 StoneVelocity;
 
     void FixedUpdate ()
     {
         // Element Air
-        if (Input.GetKey(ElementKey))
+        if (Input.GetKey(ElementKey1))
         {
             ElementAir();
+        }
+
+        if (Input.GetKey(ElementKey2))
+        {
+            ElementStone();
         }
 	}
 
@@ -42,4 +54,10 @@ public class PlayerElement : MonoBehaviour
             ElementOn = false;
         }
     }
-}
+
+    void ElementStone()
+    {
+        GameObject NewStone = GameObject.Instantiate(Stone, transform.position, Quaternion.identity, Stone.transform);
+        NewStone.GetComponent<Rigidbody2D>().velocity = StoneVelocity;
+    }
+}   

@@ -1,27 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    
     // Player
-    private Rigidbody2D Player;
+    public Rigidbody2D Player;
     // Speed
-    public float MaxSpeed = 2.0f;
+    public float MaxSpeed;
     // Jump Force
-    public float JumpForce = 0.0000000003f;
+    public float JumpForce;
+    // Whether on ground
+    public bool IsOnGround;
 
-	void Start ()
+    void Start ()
     {
-        Player = gameObject.GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate ()
     {
+        // Move towards left or right
         float horizontal = Input.GetAxis("Horizontal");
-        // float vertical = Mathf.Abs(Input.GetAxis("Vertical"));
         Player.velocity = new Vector2(horizontal * MaxSpeed, Player.velocity.y);
+
+        // Jump
+        IsOnGround = Physics.Raycast(Player.position, new Vector3(0,-1, -0.009084969f)); //?
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -29,4 +32,5 @@ public class PlayerMovement : MonoBehaviour
         }
         
 	}
+
 }

@@ -6,16 +6,15 @@ public class PlayerElement : MonoBehaviour
 {   
     // Player
     public PlayerMovement Player;
+    private bool PlayerFaceDirection; // Right = true, Left = false
 
-    // Whether the player uses elements
-    private bool ElementOn = false;
+    // Whether the player can use elements
+    public bool ElementOn = false;
 
     // Key to use elements and switch 
-    public KeyCode ElementKey1;
-    public KeyCode ElementKey2;
-    public KeyCode ElementKey3;
-    public KeyCode ElementKey4;
-    private int ElementNumber;
+    public KeyCode ElementShiftKey;
+    public KeyCode ElementAttackKey;
+    private int ElementNumber = 0;
 
     // ElementAir
     public float AirSpeedChange;
@@ -24,40 +23,102 @@ public class PlayerElement : MonoBehaviour
     public GameObject Stone;
     public Vector2 StoneVelocity;
 
-    void FixedUpdate ()
+    // ElementIce
+    public GameObject Ice;
+    public Vector2 IceVelocity;
+
+    // ElementFire
+    public GameObject Fire;
+    public Vector2 FireVelocity;
+
+    void FixedUpdate()
     {
-        // Element Air
-        if (Input.GetKey(ElementKey1))
+        // Which direction the player is facing to
+        if (Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.RightArrow)))
         {
-            ElementAir();
+            PlayerFaceDirection = true;
+        }
+        else if (Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.LeftArrow)))
+        {
+            PlayerFaceDirection = false;
         }
 
-        if (Input.GetKey(ElementKey2))
+        // Shift between elements
+        if (Input.GetKeyDown(ElementShiftKey) && ElementOn)
         {
-            ElementStone();
+            // Element Air: 0
+            if (ElementNumber == 0)
+            {
+                ElementAir(true);
+                ElementNumber = 1;
+            }
+            // Element Stone: 1
+            else if (ElementNumber == 1)
+            {
+                ElementAir(false);
+                ElementNumber = 2;
+            }
+            // Element Ice: 2
+            else if (ElementNumber == 2)
+            {
+                ElementNumber = 3;
+            }
+            // Element Fire: 3
+            else 
+            {
+                ElementNumber = 0;
+            }
+
         }
-	}
+
+        // Attack with elements
+        if (Input.GetKeyDown(ElementAttackKey) && ElementOn)
+        {
+            // Element Stone: 1
+            if (ElementNumber == 2)
+            {
+                Element(Stone, 5f, StoneVelocity);
+            }
+            // Element Ice: 2
+            if (ElementNumber == 3)
+            {
+                Element(Ice, 8f, IceVelocity);
+            }
+            // Element Fire: 3
+            if (ElementNumber == 0)
+            {
+                Element(Fire, 8f, FireVelocity);
+            }
+
+        }
+    }
 
     // Element Air
-    void ElementAir()
+    void ElementAir(bool AirOn)
     {
-        if (ElementOn == false)
+        if (AirOn)
         {
             Player.MaxSpeed = Player.MaxSpeed * AirSpeedChange;
             Player.JumpForce = Player.JumpForce * AirSpeedChange;
-            ElementOn = true;
         }
         else
         {
             Player.MaxSpeed = Player.MaxSpeed / AirSpeedChange;
             Player.JumpForce = Player.JumpForce / AirSpeedChange;
-            ElementOn = false;
         }
     }
 
-    void ElementStone()
+    void Element(GameObject Ele, float t,Vector2 vel)
     {
-        GameObject NewStone = GameObject.Instantiate(Stone, transform.position, Quaternion.identity, Stone.transform);
-        NewStone.GetComponent<Rigidbody2D>().velocity = StoneVelocity;
+
+        if (!PlayerFaceDirection)
+        {
+            vel.x = -vel.x;
+        }
+
+        GameObject New = GameObject.Instantiate(Ele, transform.position, Quaternion.identity);
+        GameObject.Destroy(New, t);
+        New.GetComponent<Rigidbody2D>().velocity = vel;
     }
 }   
+

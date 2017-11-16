@@ -7,6 +7,6 @@ public class HUD : MonoBehaviour {
 	public Sprite[] HeartSprites;
 	public Image HeartUI;
 
-	private Player Player;
+
 
 }

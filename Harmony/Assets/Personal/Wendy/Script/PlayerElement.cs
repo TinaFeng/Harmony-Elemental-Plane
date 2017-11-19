@@ -74,22 +74,7 @@ public class PlayerElement : MonoBehaviour
         // Attack with elements
         if (Input.GetKeyDown(ElementAttackKey) && ElementOn)
         {
-            // Element Stone: 1
-            if (ElementNumber == 2)
-            {
-                Element(Stone, 5f, StoneVelocity);
-            }
-            // Element Ice: 2
-            if (ElementNumber == 3)
-            {
-                Element(Ice, 8f, IceVelocity);
-            }
-            // Element Fire: 3
-            if (ElementNumber == 0)
-            {
-                Element(Fire, 8f, FireVelocity);
-            }
-
+            StartCoroutine("ElementAttack");
         }
     }
 
@@ -108,6 +93,7 @@ public class PlayerElement : MonoBehaviour
         }
     }
 
+    // Elements
     void Element(GameObject Ele, float t,Vector2 vel)
     {
 
@@ -120,5 +106,27 @@ public class PlayerElement : MonoBehaviour
         GameObject.Destroy(New, t);
         New.GetComponent<Rigidbody2D>().velocity = vel;
     }
+
+    IEnumerator ElementAttack()
+    {
+        // Element Stone: 1
+        if (ElementNumber == 2)
+        {
+            Element(Stone, 5f, StoneVelocity);
+        }
+        // Element Ice: 2
+        if (ElementNumber == 3)
+        {
+            Element(Ice, 8f, IceVelocity);
+        }
+        // Element Fire: 3
+        if (ElementNumber == 0)
+        {
+            Element(Fire, 8f, FireVelocity);
+        }
+        // suspend execution for 2 seconds
+        yield return new WaitForSeconds(2f);
+    }
+
 }   
 

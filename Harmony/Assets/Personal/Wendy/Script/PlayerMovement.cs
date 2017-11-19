@@ -11,28 +11,33 @@ public class PlayerMovement : MonoBehaviour
     public float JumpForce;
     // Whether on ground
     private RaycastHit2D Hit;
-    private bool IsGround = true;
+    private bool IsGround = false;
 
-    void Start ()
+    // Jump
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate ()
+        if (collision.gameObject.tag == "Platform")
+        {
+            Hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 0.123213f), Vector2.down, 0.001f);
+            IsGround = (Hit.collider != null);
+        }
+
+    }
+
+    // Update is called once per frame
+    void FixedUpdate ()
     {
         // Move towards left or right
         float horizontal = Input.GetAxis("Horizontal");
         Player.velocity = new Vector2(horizontal * MaxSpeed, Player.velocity.y);
 
         // Jump
-        Hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y-0.123213f), Vector2.down,0.001f);
-        IsGround = (Hit.collider != null);
 
-        if (Input.GetKeyDown(KeyCode.Space) && IsGround == true) 
+        if (Input.GetKeyDown(KeyCode.Space) && IsGround == true)
         {
             Player.AddForce(Vector2.up * JumpForce);
+            IsGround = false;
         }
-
     }
 
 }

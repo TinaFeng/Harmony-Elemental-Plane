@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class ElementIceDestroy : MonoBehaviour
 {
-    void OnCollisionEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        print("collide");
-        // Destroy(other.gameObject);
-        
+        Destroy(this.gameObject);
     }
 }

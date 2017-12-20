@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test : MonoBehaviour {
+public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -11,13 +11,6 @@ public class Test : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-       
+		
 	}
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        collision.collider.gameObject.GetComponent<EnemyState>().GetHurt(1);
-
-    }
 }

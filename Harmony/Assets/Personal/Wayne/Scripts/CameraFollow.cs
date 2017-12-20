@@ -25,5 +25,6 @@ public class CameraFollow : MonoBehaviour {
             //when the camera is able to move at y axis, move it to make the target at the center
             transform.position = new Vector3(transform.position.x, target.transform.position.y, transform.position.z);
         }
+
     }
 }

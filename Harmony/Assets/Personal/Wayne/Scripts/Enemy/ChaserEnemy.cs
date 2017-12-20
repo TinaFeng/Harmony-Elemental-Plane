@@ -12,19 +12,24 @@ public class ChaserEnemy : MonoBehaviour {
 
     private void Update()
     {
-        if (isChasing)
+        if (!GetComponent<EnemyState>().IfDefeated())
+            //if the enemy haven't been defeated
+        {
+            if (isChasing)
             //when is chasing, chase
-        {
-            Chase();
-        }
-        else
-        //havn't begin to chase, check if should to
-        {
-            if(DistanceFrom(target)< sight)
             {
-                isChasing = true;
+                Chase();
+            }
+            else
+            //havn't begin to chase, check if should to
+            {
+                if (DistanceFrom(target) < sight)
+                {
+                    isChasing = true;
+                }
             }
         }
+      
     }
 
 

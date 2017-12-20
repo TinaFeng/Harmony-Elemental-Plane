@@ -7,13 +7,24 @@ public class ShooterEnemy : MonoBehaviour {
     public Vector2 velocity;// velocity of the item being shotted
     public Vector3 positionDiffer;//position difference from the shot position to the enemy itself
     public float timeInterval;//time interval of shooting
+    private bool canShoot = true;
 
 	// Use this for initialization
 	void Start () {
         StartCoroutine(Shoot());
 	}
-	
-	IEnumerator Shoot()
+
+    private void Update()
+    {
+        if (GetComponent<EnemyState>().IfDefeated() && canShoot)
+        {
+            StopAllCoroutines();
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            canShoot = false;
+        }
+    }
+
+    IEnumerator Shoot()
     {
         while(true)
         {

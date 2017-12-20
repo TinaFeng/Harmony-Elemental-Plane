@@ -19,17 +19,20 @@ public class PlayerElement : MonoBehaviour
     // ElementAir
     public float AirSpeedChange;
 
-    // ElementStone
-    public GameObject Stone;
-    public Vector2 StoneVelocity;
+    // ElementGrass
+    public GameObject Grass;
+    public Vector2 GrassVelocity;
+    public bool boolGrassAcquire;
 
     // ElementIce
     public GameObject Ice;
     public Vector2 IceVelocity;
+    public bool boolIceAcquire;
 
     // ElementFire
     public GameObject Fire;
     public Vector2 FireVelocity;
+    public bool boolFireAcquire;
 
     void FixedUpdate()
     {
@@ -52,7 +55,7 @@ public class PlayerElement : MonoBehaviour
                 ElementAir(true);
                 ElementNumber = 1;
             }
-            // Element Stone: 1
+            // Element Grass: 1
             else if (ElementNumber == 1)
             {
                 ElementAir(false);
@@ -109,10 +112,10 @@ public class PlayerElement : MonoBehaviour
 
     IEnumerator ElementAttack()
     {
-        // Element Stone: 1
+        // Element Grass: 1
         if (ElementNumber == 2)
         {
-            Element(Stone, 5f, StoneVelocity);
+            Element(Grass, 5f, GrassVelocity);
         }
         // Element Ice: 2
         if (ElementNumber == 3)

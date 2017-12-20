@@ -6,7 +6,6 @@ public class PlayerInteraction: MonoBehaviour
 {
     // Health
     public int IntPlayerHealth = 5;
-    public bool BoolEnemyActive = true;
     public bool BoolPlayerInvincible = true;
 
     //UI
@@ -19,16 +18,21 @@ public class PlayerInteraction: MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // If hit by an active Enemy
-        if ((collision.gameObject.tag == "Enemy") && BoolEnemyActive && BoolPlayerInvincible)
+        // If hit by an Enemy
+        if (collision.gameObject.tag == "Enemy")
         {
-            IntPlayerHealth -= 1;
-            StartCoroutine(Invincible());
+            // If the enemy is not defeated
+            if (!collision.gameObject.GetComponent<EnemyState>().IfDefeated())
+            {
+                GetHurt();
+                //this.GetComponent<Rigidbody2D>().AddForce(new Vector2 (collision.transform.x));
+            }
         }
-        else if ((collision.gameObject.tag == "Enemy") && !BoolEnemyActive)
+        else if (collision.gameObject.tag == "EnemyBullet")
         {
+            GetHurt();
+        }
 
-        }
 
         /*
         // Collect gems or intereact?
@@ -60,12 +64,14 @@ public class PlayerInteraction: MonoBehaviour
         BoolPlayerInvincible = true;
     }
 
-    void FixedUpdate()
+    void GetHurt()
     {
+        IntPlayerHealth -= 1;
         if (IntPlayerHealth == 0)
         {
             Destroy(this.gameObject);
             BoolPlayerLose = true;
         }
+        StartCoroutine(Invincible());
     }
 }

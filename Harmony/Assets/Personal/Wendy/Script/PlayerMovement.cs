@@ -29,7 +29,10 @@ public class PlayerMovement : MonoBehaviour
     {
         // Move towards left or right
         float horizontal = Input.GetAxis("Horizontal");
-        Player.velocity = new Vector2(horizontal * MaxSpeed, Player.velocity.y);
+        if (Player.velocity.x < MaxSpeed)
+        {
+            Player.AddForce(new Vector2(horizontal * MaxSpeed, 0));
+        }
 
         // Jump
 

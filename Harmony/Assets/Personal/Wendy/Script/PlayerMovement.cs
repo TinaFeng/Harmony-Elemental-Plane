@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     // Whether on ground
     private RaycastHit2D Hit;
     private bool IsGround = false;
+    // Double Jump
+    public int MaxJump = 1;
+    private int Jump = 0;
 
     // Jump
     private void OnCollisionEnter2D(Collision2D collision)
@@ -19,7 +22,12 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Platform")
         {
             Hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 0.123213f), Vector2.down, 0.001f);
-            IsGround = (Hit.collider != null);
+            print(new Vector2(transform.position.x, transform.position.y - 0.123213f));
+            if (Hit.collider != null)
+            {
+                IsGround = true;
+                Jump = 0;
+            }
         }
 
     }
@@ -35,11 +43,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Jump
-
+        
         if (Input.GetKeyDown(KeyCode.Space) && IsGround == true)
         {
             Player.AddForce(Vector2.up * JumpForce);
-            IsGround = false;
+            Jump += 1;
+            if(Jump>= MaxJump)
+            {
+                IsGround = false;
+            }
         }
     }
 

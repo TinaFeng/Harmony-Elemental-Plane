@@ -31,6 +31,7 @@ public class EnemyState : MonoBehaviour {
         if (health <= 0)
         {
             defeated = true;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
         else
         //still alive, invincivable for a period
@@ -50,20 +51,30 @@ public class EnemyState : MonoBehaviour {
         //when touch player when is defeated
         if(collision.gameObject.tag == "Player")
         {
+            LevelProcessManager levelManager = GameObject.Find("Manager").GetComponent<LevelProcessManager>();
             //test if have enough gems
-            if (defeated && GameObject.Find("Manager").GetComponent<LevelProcessManager>().gem == 0)
+            if (defeated && levelManager.gem > 0)
             {
+                //heal this enemy
                 Destroy(this.gameObject);
+                levelManager.ChangeGemNumber(-1);
+                levelManager.ChangeHealedEnemyNumber(1);
             }
             
         }
+       
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         //when be attacked
-        if(collision.gameObject.tag == "PlayerElement" && canHurt)
+        if (collision.gameObject.tag == "PlayerElement" && canHurt)
         {
             GetHurt(collision.gameObject.GetComponent<ElementAttribution>().intAttack);
         }
-
     }
+
 
     IEnumerator Invincivable()
     {

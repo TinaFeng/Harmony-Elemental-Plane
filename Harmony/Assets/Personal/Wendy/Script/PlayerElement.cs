@@ -88,11 +88,13 @@ public class PlayerElement : MonoBehaviour
         {
             Player.MaxSpeed = Player.MaxSpeed * AirSpeedChange;
             Player.JumpForce = Player.JumpForce * AirSpeedChange;
+            Player.MaxJump = 2;
         }
         else
         {
             Player.MaxSpeed = Player.MaxSpeed / AirSpeedChange;
             Player.JumpForce = Player.JumpForce / AirSpeedChange;
+            Player.MaxJump = 1;
         }
     }
 

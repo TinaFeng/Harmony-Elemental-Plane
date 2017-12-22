@@ -229,8 +229,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 353821004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.89, y: 5.36, z: 49.891}
-  m_LocalScale: {x: 11.09022, y: 11.09022, z: 11.09022}
+  m_LocalPosition: {x: 16.49, y: 1.51, z: 49.891}
+  m_LocalScale: {x: 5.6073613, y: 5.607361, z: 5.6073613}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -247,8 +247,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 353821006}
-  MaxSpeed: 10
-  JumpForce: 100
+  MaxSpeed: 2
+  JumpForce: 200
+  MaxJump: 1
 --- !u!114 &353821010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -877,7 +878,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1302203062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.535832, y: 8.7549925, z: 48.098}
+  m_LocalPosition: {x: 4.55, y: 12.7, z: 48.098}
   m_LocalScale: {x: 11.09022, y: 11.09022, z: 11.09022}
   m_Children: []
   m_Father: {fileID: 935147424}

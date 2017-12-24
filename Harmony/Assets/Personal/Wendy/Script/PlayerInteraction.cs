@@ -6,7 +6,8 @@ public class PlayerInteraction: MonoBehaviour
 {
     // Health
     public int IntPlayerHealth = 5;
-    public bool BoolPlayerInvincible = true;
+    public bool playerInvincible = false;
+    public AudioClip hurtSE;
 
     //UI
     public bool BoolPlayerLose = false;
@@ -15,6 +16,13 @@ public class PlayerInteraction: MonoBehaviour
     public int IntFireGem = 0;
     public int IntIceGem = 0;
     public int IntStoneGem = 0;
+
+    private UIManager uiManager;
+
+    private void Start()
+    {
+        uiManager = GameObject.Find("Manager").GetComponent<UIManager>();
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -46,7 +54,7 @@ public class PlayerInteraction: MonoBehaviour
     IEnumerator Invincible()
     {
         //Let the player invincible for 2 seconds after lose one heart
-        BoolPlayerInvincible = false;
+        playerInvincible = true;
         //Shining
         for (int x = 1; x <= 10; x++)
         {
@@ -61,17 +69,22 @@ public class PlayerInteraction: MonoBehaviour
             yield return new WaitForSeconds(0.25f);
         }
         // Able to get hurt again
-        BoolPlayerInvincible = true;
+        playerInvincible = false;
     }
 
     void GetHurt()
     {
-        IntPlayerHealth -= 1;
-        if (IntPlayerHealth == 0)
+        if(!playerInvincible)
         {
-            Destroy(this.gameObject);
-            BoolPlayerLose = true;
-        }
-        StartCoroutine(Invincible());
+            AudioSource.PlayClipAtPoint(hurtSE, new Vector3(0, 0, 0));
+            IntPlayerHealth -= 1;
+            if (IntPlayerHealth == 0)
+            {
+                Destroy(this.gameObject);
+                BoolPlayerLose = true;
+            }
+            uiManager.UpdateHealth(IntPlayerHealth);
+            StartCoroutine(Invincible());
+        }  
     }
 }

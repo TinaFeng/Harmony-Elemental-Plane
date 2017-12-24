@@ -18,6 +18,8 @@ public class EnemyState : MonoBehaviour {
     public element elementType;
     private Color32 color;
 
+    public AudioClip hurtSE;
+
     private void Start()
     {
         color = GetComponent<SpriteRenderer>().color;
@@ -32,6 +34,8 @@ public class EnemyState : MonoBehaviour {
         {
             defeated = true;
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            GetComponent<Collider2D>().isTrigger = true;
         }
         else
         //still alive, invincivable for a period
@@ -46,10 +50,17 @@ public class EnemyState : MonoBehaviour {
         return defeated;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        //when touch player when is defeated
-        if(collision.gameObject.tag == "Player")
+        //when be attacked
+        if (collision.gameObject.tag == "PlayerElement" && canHurt)
+        {
+            AudioSource.PlayClipAtPoint(hurtSE, new Vector3(0, 0, 0));
+            GetHurt(collision.gameObject.GetComponent<ElementAttribution>().intAttack);
+        }
+
+        if (collision.gameObject.tag == "Player")
         {
             LevelProcessManager levelManager = GameObject.Find("Manager").GetComponent<LevelProcessManager>();
             //test if have enough gems
@@ -60,18 +71,7 @@ public class EnemyState : MonoBehaviour {
                 levelManager.ChangeGemNumber(-1);
                 levelManager.ChangeHealedEnemyNumber(1);
             }
-            
-        }
-       
 
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //when be attacked
-        if (collision.gameObject.tag == "PlayerElement" && canHurt)
-        {
-            GetHurt(collision.gameObject.GetComponent<ElementAttribution>().intAttack);
         }
     }
 

@@ -57,8 +57,8 @@ public class DummyEnemy : MonoBehaviour {
         //when touch player, shoot off? it
         if(collision.gameObject.tag == "Player" && canMove)
         {
-            float angle = Mathf.Atan((collision.gameObject.transform.position.y - transform.position.y + 1)/ (collision.gameObject.transform.position.x - transform.position.x));
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) *250);
+            float angle = Mathf.Atan2(collision.gameObject.transform.position.y - transform.position.y, collision.gameObject.transform.position.x - transform.position.x);
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)+1) * 250);
         }
     }
 

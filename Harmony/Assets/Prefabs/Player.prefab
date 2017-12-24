@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1156925629069806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.27, y: 0.42, z: 49.891}
+  m_LocalPosition: {x: -3, y: -2.13, z: 49.891}
   m_LocalScale: {x: 5, y: 7, z: 11.09022}
   m_Children: []
   m_Father: {fileID: 0}
@@ -73,7 +73,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1156925629069806}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2f13fe557ffd0cd45b69ae14127680d4, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -103,7 +103,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 50561658175664986}
   MaxSpeed: 5
+  horizontalForce: 10
   JumpForce: 350
+  MaxJump: 1
+  jumpSE: {fileID: 8300000, guid: 39faf945f605670498b6d73b82c84b0b, type: 3}
 --- !u!114 &114625791782731862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,7 +119,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IntPlayerHealth: 5
-  BoolPlayerInvincible: 1
+  playerInvincible: 0
+  hurtSE: {fileID: 8300000, guid: a6460603c5a18904eb53b04ea97f847c, type: 3}
   BoolPlayerLose: 0
   IntFireGem: 0
   IntIceGem: 0
@@ -132,19 +136,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e81f394358d6547b5278b3541a5950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootSE: {fileID: 8300000, guid: 8b90f40af27cc9b4fb20bc6f837389c8, type: 3}
   Player: {fileID: 114470751428429788}
   ElementOn: 1
   ElementShiftKey: 122
   ElementAttackKey: 120
-  AirSpeedChange: 2
+  AirSpeedChange: 1.2
   Grass: {fileID: 1851407515504958, guid: 06d67b6d4761e204cb3d793684e70307, type: 2}
   GrassVelocity: {x: 2, y: 3}
   boolGrassAcquire: 0
   Ice: {fileID: 1851407515504958, guid: 5437fcbf15cdfad4dbf402d71ef666cf, type: 2}
-  IceVelocity: {x: 2, y: 0}
+  IceVelocity: {x: 2, y: 2}
   boolIceAcquire: 0
   Fire: {fileID: 1851407515504958, guid: 204a68f86db7e0a43bd2480339f9bec8, type: 2}
-  FireVelocity: {x: 1, y: 0}
+  FireVelocity: {x: 2, y: 2}
   boolFireAcquire: 0
 --- !u!212 &212996075794155372
 SpriteRenderer:

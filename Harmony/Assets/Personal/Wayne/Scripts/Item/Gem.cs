@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Gem : MonoBehaviour {
+    public AudioClip collectGem;
+
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +21,7 @@ public class Gem : MonoBehaviour {
         //
         if(collision.gameObject.tag == "Player")
         {
+            AudioSource.PlayClipAtPoint(collectGem, new Vector3(0, 0, 0));
             Destroy(this.gameObject);
             GameObject.Find("Manager").GetComponent<LevelProcessManager>().ChangeGemNumber(1);
         }

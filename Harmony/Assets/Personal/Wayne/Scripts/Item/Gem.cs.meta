@@ -1,11 +1,12 @@
 fileFormatVersion: 2
 guid: 82093cb759fd98b48aecbe1bdd1f9f38
-timeCreated: 1513534064
+timeCreated: 1514072244
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - collectGem: {fileID: 8300000, guid: 5a90eeeb599811d41814cfcbcd3da7b8, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

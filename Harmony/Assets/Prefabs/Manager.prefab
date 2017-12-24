@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4579980528242222}
   - component: {fileID: 114869889141756986}
   - component: {fileID: 114330702158773314}
+  - component: {fileID: 81353031007614876}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -35,12 +36,19 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1119469207645300}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.1528015, y: -2.049408, z: 0.09375}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &81353031007614876
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1119469207645300}
+  m_Enabled: 1
 --- !u!114 &114330702158773314
 MonoBehaviour:
   m_ObjectHideFlags: 1

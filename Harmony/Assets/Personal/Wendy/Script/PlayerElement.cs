@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerElement : MonoBehaviour
-{   
+{
+    public AudioClip shootSE;
     // Player
     public PlayerMovement Player;
     private bool PlayerFaceDirection; // Right = true, Left = false
@@ -12,6 +13,7 @@ public class PlayerElement : MonoBehaviour
     public bool ElementOn = false;
 
     // Key to use elements and switch 
+    private UIManager uiManager;
     public KeyCode ElementShiftKey;
     public KeyCode ElementAttackKey;
     private int ElementNumber = 0;
@@ -34,6 +36,12 @@ public class PlayerElement : MonoBehaviour
     public Vector2 FireVelocity;
     public bool boolFireAcquire;
 
+    private void Start()
+    {
+        uiManager = GameObject.Find("Manager").GetComponent<UIManager>();
+        uiManager.UpdatePlayerElement(element.fire);
+    }
+
     void FixedUpdate()
     {
         // Which direction the player is facing to
@@ -54,22 +62,26 @@ public class PlayerElement : MonoBehaviour
             {
                 ElementAir(true);
                 ElementNumber = 1;
+                uiManager.UpdatePlayerElement(element.air);
             }
             // Element Grass: 1
             else if (ElementNumber == 1)
             {
                 ElementAir(false);
                 ElementNumber = 2;
+                uiManager.UpdatePlayerElement(element.grass);
             }
             // Element Ice: 2
             else if (ElementNumber == 2)
             {
                 ElementNumber = 3;
+                uiManager.UpdatePlayerElement(element.water);
             }
             // Element Fire: 3
             else 
             {
                 ElementNumber = 0;
+                uiManager.UpdatePlayerElement(element.fire);
             }
 
         }
@@ -101,7 +113,7 @@ public class PlayerElement : MonoBehaviour
     // Elements
     void Element(GameObject Ele, float t,Vector2 vel)
     {
-
+        AudioSource.PlayClipAtPoint(shootSE, new Vector3(0, 0, 0));
         if (!PlayerFaceDirection)
         {
             vel.x = -vel.x;

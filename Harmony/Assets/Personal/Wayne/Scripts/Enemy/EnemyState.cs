@@ -75,6 +75,15 @@ public class EnemyState : MonoBehaviour {
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //when touch player, shoot off? it
+        if (collision.gameObject.tag == "Player")
+        {
+            float angle = Mathf.Atan2(collision.gameObject.transform.position.y - transform.position.y, collision.gameObject.transform.position.x - transform.position.x);
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos(angle), Mathf.Sin(angle) + 1) * 250);
+        }
+    }
 
     IEnumerator Invincivable()
     {
@@ -98,4 +107,5 @@ public class EnemyState : MonoBehaviour {
         canHurt = true;// able to get hurt again
 
     }
+
 }

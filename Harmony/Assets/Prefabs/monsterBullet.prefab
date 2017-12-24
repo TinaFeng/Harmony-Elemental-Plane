@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 212032415715933046}
   - component: {fileID: 58928102877321088}
   - component: {fileID: 50182200707114610}
+  - component: {fileID: 114944518681663580}
   m_Layer: 0
   m_Name: monsterBullet
-  m_TagString: Enemy
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,6 +78,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!114 &114944518681663580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1851407515504958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16cfaf52c03b98c4aae5f05962008b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212032415715933046
 SpriteRenderer:
   m_ObjectHideFlags: 1

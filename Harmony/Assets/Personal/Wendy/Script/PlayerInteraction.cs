@@ -36,10 +36,7 @@ public class PlayerInteraction: MonoBehaviour
                 //this.GetComponent<Rigidbody2D>().AddForce(new Vector2 (collision.transform.x));
             }
         }
-        else if (collision.gameObject.tag == "EnemyBullet")
-        {
-            GetHurt();
-        }
+        
 
 
         /*
@@ -49,6 +46,14 @@ public class PlayerInteraction: MonoBehaviour
             
         }
         */
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyBullet")
+        {
+            GetHurt();
+        }
     }
 
     IEnumerator Invincible()

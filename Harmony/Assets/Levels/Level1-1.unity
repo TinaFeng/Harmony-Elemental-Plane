@@ -215,18 +215,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 58156783889933028, guid: cc34315e317e7ba419046cfc6e768f32,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: 0.0015546799
-      objectReference: {fileID: 0}
-    - target: {fileID: 58156783889933028, guid: cc34315e317e7ba419046cfc6e768f32,
-        type: 2}
-      propertyPath: m_Radius
-      value: 0.15130368
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 58156783889933028, guid: cc34315e317e7ba419046cfc6e768f32, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc34315e317e7ba419046cfc6e768f32, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &643397103 stripped
@@ -267,26 +256,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &753440730 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1696223088052730, guid: cc34315e317e7ba419046cfc6e768f32,
-    type: 2}
-  m_PrefabInternal: {fileID: 643397102}
---- !u!70 &753440731
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 753440730}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0015556336, y: 0.00000038146973}
-  m_Size: {x: 0.24316406, y: 0.299131}
-  m_Direction: 0
 --- !u!1001 &781814998
 Prefab:
   m_ObjectHideFlags: 0
@@ -484,18 +453,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114628155362189864, guid: 91efe2fb02af55d409ab466e3d901202,
-        type: 2}
-      propertyPath: FireVelocity.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114628155362189864, guid: 91efe2fb02af55d409ab466e3d901202,
-        type: 2}
-      propertyPath: FireVelocity.x
-      value: 10
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 61516516183196978, guid: 91efe2fb02af55d409ab466e3d901202, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91efe2fb02af55d409ab466e3d901202, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1638349071
@@ -545,21 +503,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1156925629069806, guid: 91efe2fb02af55d409ab466e3d901202,
     type: 2}
   m_PrefabInternal: {fileID: 1211419962}
---- !u!70 &1704659823
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1704659822}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.16, y: 0.15999998}
-  m_Direction: 0
 --- !u!1 &1805965430
 GameObject:
   m_ObjectHideFlags: 0

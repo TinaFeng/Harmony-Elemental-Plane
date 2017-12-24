@@ -8,6 +8,7 @@ public class PlayerElement : MonoBehaviour
     // Player
     public PlayerMovement Player;
     private bool PlayerFaceDirection; // Right = true, Left = false
+    private Animator animator;
 
     // Whether the player can use elements
     public bool ElementOn = false;
@@ -40,6 +41,8 @@ public class PlayerElement : MonoBehaviour
     {
         uiManager = GameObject.Find("Manager").GetComponent<UIManager>();
         uiManager.UpdatePlayerElement(element.fire);
+        PlayerFaceDirection = true;
+        animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -48,10 +51,19 @@ public class PlayerElement : MonoBehaviour
         if (Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.RightArrow)))
         {
             PlayerFaceDirection = true;
+            animator.SetTrigger("TurnRight");
+            animator.speed = 1;
         }
         else if (Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.LeftArrow)))
         {
             PlayerFaceDirection = false;
+            animator.SetTrigger("TurnLeft");
+            animator.speed = 1;
+        }
+        else
+        {
+            animator.Play(0);
+            animator.speed = 0;
         }
 
         // Shift between elements

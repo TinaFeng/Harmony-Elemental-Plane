@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114300498177296036}
   - component: {fileID: 50208725386499330}
   - component: {fileID: 70986260367005382}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShooterMonster
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -105,8 +105,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1851407515504958, guid: 3c77b74f17a2a3849bccd0216df7106c, type: 2}
-  velocity: {x: -3, y: 3}
-  positionDiffer: {x: 0, y: -0.7, z: 0}
+  velocity: {x: -2, y: 1}
+  positionDiffer: {x: 0, y: -0.4, z: 0}
   timeInterval: 1
 --- !u!212 &212760564514204258
 SpriteRenderer:

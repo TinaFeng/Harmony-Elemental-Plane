@@ -18,6 +18,7 @@ public class PlayerElement : MonoBehaviour
     public KeyCode ElementShiftKey;
     public KeyCode ElementAttackKey;
     private int ElementNumber = 0;
+    private bool CanShoot = true;
 
     // ElementAir
     public float AirSpeedChange;
@@ -67,39 +68,42 @@ public class PlayerElement : MonoBehaviour
         }
 
         // Shift between elements
-        if (Input.GetKeyDown(ElementShiftKey) && ElementOn)
+        if (Input.GetKeyDown(ElementShiftKey))
         {
-            // Element Air: 0
-            if (ElementNumber == 0)
+            ElementOn = true;
+            if (ElementOn)
             {
-                ElementAir(true);
-                ElementNumber = 1;
-                uiManager.UpdatePlayerElement(element.air);
-            }
-            // Element Grass: 1
-            else if (ElementNumber == 1)
-            {
-                ElementAir(false);
-                ElementNumber = 2;
-                uiManager.UpdatePlayerElement(element.grass);
-            }
-            // Element Ice: 2
-            else if (ElementNumber == 2)
-            {
-                ElementNumber = 3;
-                uiManager.UpdatePlayerElement(element.water);
-            }
-            // Element Fire: 3
-            else 
-            {
-                ElementNumber = 0;
-                uiManager.UpdatePlayerElement(element.fire);
-            }
+                // Element Air: 0
+                if (ElementNumber == 0)
+                {
+                    ElementAir(true);
+                    ElementNumber = 1;
+                    uiManager.UpdatePlayerElement(element.air);
+                }
+                // Element Grass: 1
+                else if (ElementNumber == 1)
+                {
+                    ElementAir(false);
+                    ElementNumber = 2;
+                    uiManager.UpdatePlayerElement(element.grass);
+                }
+                // Element Ice: 2
+                else if (ElementNumber == 2)
+                {
+                    ElementNumber = 3;
+                    uiManager.UpdatePlayerElement(element.water);
+                }
+                // Element Fire: 3
+                else
+                {
+                    ElementNumber = 0;
+                    uiManager.UpdatePlayerElement(element.fire);
+                }
 
+            }
         }
-
         // Attack with elements
-        if (Input.GetKeyDown(ElementAttackKey) && ElementOn)
+        if (Input.GetKeyDown(ElementAttackKey) && ElementOn && CanShoot)
         {
             StartCoroutine("ElementAttack");
         }
@@ -138,6 +142,7 @@ public class PlayerElement : MonoBehaviour
 
     IEnumerator ElementAttack()
     {
+        CanShoot = false;
         // Element Grass: 1
         if (ElementNumber == 2)
         {
@@ -151,10 +156,15 @@ public class PlayerElement : MonoBehaviour
         // Element Fire: 3
         if (ElementNumber == 0)
         {
+            Element(Fire, 8f, new Vector2(FireVelocity.x, FireVelocity.y - 2));
+            Element(Fire, 8f, new Vector2(FireVelocity.x,FireVelocity.y - 1));
             Element(Fire, 8f, FireVelocity);
+            Element(Fire, 8f, new Vector2(FireVelocity.x, FireVelocity.y + 1));
+            Element(Fire, 8f, new Vector2(FireVelocity.x, FireVelocity.y + 2));
         }
-        // suspend execution for 2 seconds
-        yield return new WaitForSeconds(2f);
+        // suspend execution for 0.3 seconds
+        yield return new WaitForSeconds(0.3f);
+        CanShoot = true;
     }
 
 }   

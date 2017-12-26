@@ -18,6 +18,9 @@ public class EnemyState : MonoBehaviour {
     public element elementType;
     private Color32 color;
 
+    public GameObject Player;
+    private bool PlayerCanHurt = true;
+
     public AudioClip hurtSE;
 
     private void Start()
@@ -33,6 +36,7 @@ public class EnemyState : MonoBehaviour {
         if (health <= 0)
         {
             defeated = true;
+            canHurt = false;
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             GetComponent<Collider2D>().isTrigger = true;
@@ -87,6 +91,7 @@ public class EnemyState : MonoBehaviour {
 
     IEnumerator Invincivable()
     {
+        canHurt = false;
         //let the enemy invincible for 1 seconds after lose one heart
         this.GetComponent<SpriteRenderer>().color = new Color32(color.a, color.b, color.g, 155);
         yield return new WaitForSeconds(1f);
@@ -108,4 +113,8 @@ public class EnemyState : MonoBehaviour {
 
     }
 
+    private void Update()
+    {
+        PlayerCanHurt = !Player.GetComponent<PlayerInteraction>().playerInvincible;
+    }
 }

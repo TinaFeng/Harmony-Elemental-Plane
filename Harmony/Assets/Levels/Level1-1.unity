@@ -88,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -166,6 +165,11 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114122539181200902, guid: 28552b8107821c4479a6d3f3096e9c52,
+        type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1704659822}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28552b8107821c4479a6d3f3096e9c52, type: 2}
   m_IsPrefabParent: 0
@@ -243,6 +247,11 @@ Prefab:
       propertyPath: m_Size.y
       value: 1.1023006
       objectReference: {fileID: 0}
+    - target: {fileID: 114300498177296036, guid: cc34315e317e7ba419046cfc6e768f32,
+        type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1704659822}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc34315e317e7ba419046cfc6e768f32, type: 2}
   m_IsPrefabParent: 0
@@ -294,12 +303,12 @@ Prefab:
     - target: {fileID: 224901242164147398, guid: 31d96c8b5807ae749acf29effe97ce3b,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 306
       objectReference: {fileID: 0}
     - target: {fileID: 224901242164147398, guid: 31d96c8b5807ae749acf29effe97ce3b,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 139
       objectReference: {fileID: 0}
     - target: {fileID: 224901242164147398, guid: 31d96c8b5807ae749acf29effe97ce3b,
         type: 2}
@@ -481,6 +490,36 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114628155362189864, guid: 91efe2fb02af55d409ab466e3d901202,
+        type: 2}
+      propertyPath: IceVelocity.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114628155362189864, guid: 91efe2fb02af55d409ab466e3d901202,
+        type: 2}
+      propertyPath: IceVelocity.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114628155362189864, guid: 91efe2fb02af55d409ab466e3d901202,
+        type: 2}
+      propertyPath: GrassVelocity.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114628155362189864, guid: 91efe2fb02af55d409ab466e3d901202,
+        type: 2}
+      propertyPath: GrassVelocity.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114628155362189864, guid: 91efe2fb02af55d409ab466e3d901202,
+        type: 2}
+      propertyPath: FireVelocity.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114628155362189864, guid: 91efe2fb02af55d409ab466e3d901202,
+        type: 2}
+      propertyPath: ElementOn
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91efe2fb02af55d409ab466e3d901202, type: 2}
   m_IsPrefabParent: 0
@@ -587,7 +626,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10

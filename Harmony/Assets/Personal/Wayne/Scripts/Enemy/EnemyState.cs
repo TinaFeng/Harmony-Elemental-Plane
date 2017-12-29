@@ -18,9 +18,6 @@ public class EnemyState : MonoBehaviour {
     public element elementType;
     private Color32 color;
 
-    public GameObject Player;
-    private bool PlayerCanHurt = true;
-
     public AudioClip hurtSE;
 
     private void Start()
@@ -113,8 +110,4 @@ public class EnemyState : MonoBehaviour {
 
     }
 
-    private void Update()
-    {
-        PlayerCanHurt = !Player.GetComponent<PlayerInteraction>().playerInvincible;
-    }
 }

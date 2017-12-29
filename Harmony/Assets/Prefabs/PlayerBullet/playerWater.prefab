@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intAttack: 5
-  elementType: 0
+  elementType: 1
   vec2Speed: {x: 0, y: 0}
   boolAcquire: 0
 --- !u!114 &114778308943384044

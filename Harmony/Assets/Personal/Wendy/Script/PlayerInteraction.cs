@@ -77,7 +77,7 @@ public class PlayerInteraction: MonoBehaviour
         playerInvincible = false;
     }
 
-    void GetHurt()
+    public void GetHurt()
     {
         if(!playerInvincible)
         {

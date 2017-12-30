@@ -19,7 +19,7 @@ public class Obstacle : MonoBehaviour {
         if(collision.gameObject.tag == "PlayerElement" && collision.gameObject.GetComponent<ElementAttribution>().elementType == weakness)
         {
             GetComponent<Animator>().SetTrigger("Disappear");
-            Destroy(gameObject, 0.5f);
+            Destroy(gameObject, 0.75f);
         }
     }
 }

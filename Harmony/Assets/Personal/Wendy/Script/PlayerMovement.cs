@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     // Double Jump
     public int MaxJump = 1;
     private int Jump = 0;
+    private int TempJump;
     public AudioClip jumpSE;
 
     // Jump
@@ -23,11 +24,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Platform")
         {
-            Hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 0.123213f), Vector2.down, 0.001f);
+            IsGround = true;
+            TempJump = Jump;
+            Jump = 0;
+            Hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.611f), Vector2.up, 0.001f);
             if (Hit.collider != null)
             {
-                IsGround = true;
-                Jump = 0;
+                IsGround = (TempJump < MaxJump);
+                Jump = TempJump;
             }
         }
 
@@ -55,10 +59,7 @@ public class PlayerMovement : MonoBehaviour
             AudioSource.PlayClipAtPoint(jumpSE, new Vector3(0, 0, 0));
             Player.AddForce(Vector2.up * JumpForce);
             Jump += 1;
-            if(Jump>= MaxJump)
-            {
-                IsGround = false;
-            }
+            IsGround = (Jump < MaxJump);
         }
     }
 

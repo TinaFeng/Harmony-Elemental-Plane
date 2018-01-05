@@ -17,11 +17,13 @@ public class EnemyState : MonoBehaviour {
     private bool canHurt = true;
     public element elementType;
     private Color32 color;
+    private bool healed = false;
 
     public AudioClip hurtSE;
 
     private void Start()
     {
+        GetComponent<SpriteRenderer>().color = new Color32(70, 70, 70, 255);
         color = GetComponent<SpriteRenderer>().color;
     }
 
@@ -37,6 +39,8 @@ public class EnemyState : MonoBehaviour {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             GetComponent<Collider2D>().isTrigger = true;
+            //change color to prompt the player the state change
+            GetComponent<SpriteRenderer>().color = new Color32(120, 120, 120, 255);
         }
         else
         //still alive, invincivable for a period
@@ -65,12 +69,14 @@ public class EnemyState : MonoBehaviour {
         {
             LevelProcessManager levelManager = GameObject.Find("Manager").GetComponent<LevelProcessManager>();
             //test if have enough gems
-            if (defeated && levelManager.gem > 0)
+            if (!healed && defeated && levelManager.gem > 0)
             {
                 //heal this enemy
-                Destroy(this.gameObject);
+                healed = true;
+                gameObject.tag = "Untagged";
                 levelManager.ChangeGemNumber(-1);
                 levelManager.ChangeHealedEnemyNumber(1);
+                StartCoroutine(HealColor());
             }
 
         }
@@ -90,9 +96,9 @@ public class EnemyState : MonoBehaviour {
     {
         canHurt = false;
         //let the enemy invincible for 1 seconds after lose one heart
-        this.GetComponent<SpriteRenderer>().color = new Color32(color.a, color.b, color.g, 155);
+        this.GetComponent<SpriteRenderer>().color = new Color32(color.r, color.g, color.b, 155);
         yield return new WaitForSeconds(1f);
-        this.GetComponent<SpriteRenderer>().color = new Color32(color.a, color.b, color.g, 255);
+        this.GetComponent<SpriteRenderer>().color = new Color32(color.r, color.g, color.b, 255);
         /*
         for (int x = 1; x <= 6; x++)
         {//shining
@@ -108,6 +114,67 @@ public class EnemyState : MonoBehaviour {
         }*/
         canHurt = true;// able to get hurt again
 
+    }
+
+    IEnumerator HealColor()
+     //rainbow color effect when healed
+    {
+        color = GetComponent<SpriteRenderer>().color;
+        byte speed = 15;
+        float timeInterval = 0.005f;
+        for (int x = 120; x< 255; x+=speed)
+        {
+            color.r += speed;
+            if(color.g > 0)
+            {
+                color.g -= speed;
+                color.b -= speed;
+            }
+            GetComponent<SpriteRenderer>().color = color;
+            yield return new WaitForSeconds(timeInterval);
+        }
+
+        for(int x = 0; x<255; x+= speed)
+        {
+            color.b += speed;
+            GetComponent<SpriteRenderer>().color = color;
+            yield return new WaitForSeconds(timeInterval);
+        }
+
+        for (int x = 0; x < 255; x += speed)
+        {
+            color.r -= speed;
+            GetComponent<SpriteRenderer>().color = color;
+            yield return new WaitForSeconds(timeInterval);
+        }
+
+        for (int x = 0; x < 255; x += speed)
+        {
+            color.g += speed;
+            GetComponent<SpriteRenderer>().color = color;
+            yield return new WaitForSeconds(timeInterval);
+        }
+
+        for (int x = 0; x < 255; x += speed)
+        {
+            color.b -= speed;
+            GetComponent<SpriteRenderer>().color = color;
+            yield return new WaitForSeconds(timeInterval);
+        }
+
+        for (int x = 0; x < 255; x += speed)
+        {
+            color.r += speed;
+            GetComponent<SpriteRenderer>().color = color;
+            yield return new WaitForSeconds(timeInterval);
+        }
+
+        for (int x = 0; x < 255; x += speed)
+        {
+            color.b += speed;
+            GetComponent<SpriteRenderer>().color = color;
+            yield return new WaitForSeconds(timeInterval);
+        }
     }
 
 }

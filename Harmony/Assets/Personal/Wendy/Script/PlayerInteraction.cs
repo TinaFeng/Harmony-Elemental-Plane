@@ -87,6 +87,7 @@ public class PlayerInteraction: MonoBehaviour
             {
                 Destroy(this.gameObject);
                 BoolPlayerLose = true;
+                uiManager.ShowGameOverUI();
             }
             uiManager.UpdateHealth(IntPlayerHealth);
             StartCoroutine(Invincible());

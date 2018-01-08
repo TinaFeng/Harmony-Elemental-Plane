@@ -9,18 +9,25 @@ public class UIManager : MonoBehaviour {
 
     public GameObject PauseUI;
     private bool paused = false;
+    private bool gameOver = false;
 
     public GameObject gemUI;
+    public Sprite[] elementSprites;
     public GameObject playerElementUI;
 
     // Use this for initialization
     void Start () {
         PauseUI.SetActive(false);
+        playerElementUI.GetComponent<Image>().sprite = elementSprites[0];
     }
 	
 	// Update is called once per frame
 	void Update () {
-        CheckPause();
+        if(!gameOver)
+        {
+            CheckPause();
+        }
+        
     }
 
     public void UpdateHealth(int value)
@@ -53,6 +60,12 @@ public class UIManager : MonoBehaviour {
         paused = false;
     }
 
+    public void ShowGameOverUI()
+    {
+        PauseUI.SetActive(true);
+        Time.timeScale = 0;
+        gameOver = true;
+    }
 
     public void UpdateGem(int value)
     {
@@ -63,18 +76,18 @@ public class UIManager : MonoBehaviour {
     {
         if(element == element.fire)
         {
-            playerElementUI.GetComponent<Text>().text = "fire";
+            playerElementUI.GetComponent<Image>().sprite = elementSprites[1];
         }else if (element == element.air)
         {
-            playerElementUI.GetComponent<Text>().text = "air";
+            playerElementUI.GetComponent<Image>().sprite = elementSprites[2];
         }
         else if (element == element.grass)
         {
-            playerElementUI.GetComponent<Text>().text = "grass";
+            playerElementUI.GetComponent<Image>().sprite = elementSprites[3];
         }
         else
         {
-            playerElementUI.GetComponent<Text>().text = "water";
+            playerElementUI.GetComponent<Image>().sprite = elementSprites[4];
         }
     }
 

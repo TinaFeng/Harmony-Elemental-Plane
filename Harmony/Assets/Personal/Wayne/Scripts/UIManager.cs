@@ -11,6 +11,9 @@ public class UIManager : MonoBehaviour {
     private bool paused = false;
     private bool gameOver = false;
 
+    public GameObject gameOverUI;
+    public string currentScene;
+
     public GameObject gemUI;
     public Sprite[] elementSprites;
     public GameObject playerElementUI;
@@ -60,9 +63,14 @@ public class UIManager : MonoBehaviour {
         paused = false;
     }
 
+    public void RestartButton()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene);
+    }
+
     public void ShowGameOverUI()
     {
-        PauseUI.SetActive(true);
+        gameOverUI.SetActive(true);
         Time.timeScale = 0;
         gameOver = true;
     }

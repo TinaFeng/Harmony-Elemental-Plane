@@ -41,7 +41,6 @@ public class PlayerElement : MonoBehaviour
     private void Start()
     {
         uiManager = GameObject.Find("Manager").GetComponent<UIManager>();
-        uiManager.UpdatePlayerElement(element.fire);
         PlayerFaceDirection = true;
         animator = GetComponent<Animator>();
     }

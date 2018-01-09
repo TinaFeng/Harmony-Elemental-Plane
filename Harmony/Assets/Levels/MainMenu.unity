@@ -871,10 +871,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "CREDITS \n\nLead Programmer - Weiyan Zhu\nPlayer Progrrammer - Wendy Wang\nArtist
-    - Kim Nguyen\nSound/Writer - Sandra Soto\nUI Progammer/Designer - Kent Jitpatima\nDesign/Stuff
-    - Ana Nguyen\nTina Feng - Officer Buddy\n\n\nThanks for Playing!\nStill work in
-    progress!\n\n"
+  m_Text: "CREDITS \n\nLead(Terrible) Programmer - Weiyan Zhu\nPlayer Progrrammer
+    - Wendy Wang\nArtist - Kim Nguyen\nSound/Writer - Sandra Soto\nUI Progammer/Designer
+    - Kent Jitpatima\nDesign/Stuff - Ana Nguyen\n\u2606\u2606\u2606Officer Buddy -
+    Tina Feng\u2606\u2606\u2606\n\nThe fire element, water element and monster bullet
+    are made(stole) by(from) the great artist Tina Feng!\n\nThanks for Playing!\nStill
+    work in progress!\n\n"
 --- !u!222 &1186174228
 CanvasRenderer:
   m_ObjectHideFlags: 0

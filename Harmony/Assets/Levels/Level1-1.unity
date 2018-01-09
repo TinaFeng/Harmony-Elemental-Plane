@@ -165,6 +165,21 @@ Prefab:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1704659822}
+    - target: {fileID: 212545298934536440, guid: 28552b8107821c4479a6d3f3096e9c52,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212545298934536440, guid: 28552b8107821c4479a6d3f3096e9c52,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212545298934536440, guid: 28552b8107821c4479a6d3f3096e9c52,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28552b8107821c4479a6d3f3096e9c52, type: 2}
   m_IsPrefabParent: 0

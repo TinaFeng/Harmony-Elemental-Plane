@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class DummyEnemy : MonoBehaviour {
     public Vector2[] velocityArray;//X denotes the X velocity, Y here is how much time the enemy moves
+
+    public Sprite leftSprite;
+    public Sprite rightSprite;
+
     private bool canMove = true;
     private float timer;
     private int velocityIndex;//which index of velocity is the object in
@@ -14,8 +18,8 @@ public class DummyEnemy : MonoBehaviour {
 	void Start () {
         velocityIndex = 0;
         timer = 0;
-        
-	}
+        ChangeSprite(velocityArray[0][0]);        
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -49,9 +53,21 @@ public class DummyEnemy : MonoBehaviour {
             {
                 velocityIndex = 0;
             }
+            ChangeSprite(velocityArray[velocityIndex][0]);
         }      
     }
 
-
+    public void ChangeSprite(float x)
+        //get the monster's x velocity and change its sprite
+    {
+        if(x>0)
+        {
+            GetComponent<SpriteRenderer>().sprite = rightSprite;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = leftSprite;
+        }
+    }
 
 }

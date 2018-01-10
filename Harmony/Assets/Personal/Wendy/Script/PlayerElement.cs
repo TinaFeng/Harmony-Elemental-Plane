@@ -150,21 +150,24 @@ public class PlayerElement : MonoBehaviour
 
     IEnumerator ElementAttack()
     {
-        AudioSource.PlayClipAtPoint(shootSE, new Vector3(0, 0, 0));
+        
         CanShoot = false;
         // Element Grass: 1
         if (ElementNumber == 2)
         {
+            AudioSource.PlayClipAtPoint(shootSE, new Vector3(0, 0, 0));
             Element(Grass, 5f, GrassVelocity);
         }
         // Element Ice: 2
         if (ElementNumber == 3)
         {
+            AudioSource.PlayClipAtPoint(shootSE, new Vector3(0, 0, 0));
             Element(Ice, 8f, IceVelocity);
         }
         // Element Fire: 3
         if (ElementNumber == 0)
         {
+            AudioSource.PlayClipAtPoint(shootSE, new Vector3(0, 0, 0));
             Element(Fire, 8f, new Vector2(FireVelocity.x, FireVelocity.y - 2));
             Element(Fire, 8f, new Vector2(FireVelocity.x,FireVelocity.y - 1));
             Element(Fire, 8f, FireVelocity);

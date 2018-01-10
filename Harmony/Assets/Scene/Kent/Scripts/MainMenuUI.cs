@@ -5,12 +5,14 @@ using UnityEngine;
 public class MainMenuUI : MonoBehaviour {
     public GameObject MainMenuCanvas;
     public GameObject CreditsCanvas;
+    public GameObject InstructionCanvas;
 	public string MainMenuScene;
 	public string destinationScene;
 
     private void Start(){
         MainMenuCanvas.SetActive(true);
         CreditsCanvas.SetActive(false);
+        InstructionCanvas.SetActive(false);
     }
     
     public void StartGame(){
@@ -33,6 +35,12 @@ public class MainMenuUI : MonoBehaviour {
 	public void LoadMainMenu(){
 		UnityEngine.SceneManagement.SceneManager.LoadScene (MainMenuScene);
 	} 
-		
+	
+    public void Instruction()
+    {
+        MainMenuCanvas.SetActive(false);
+        InstructionCanvas.SetActive(true);
+    }
+
 }
 //UnityEngine.SceneManagement.SceneManager.LoadScene(destinationScene);

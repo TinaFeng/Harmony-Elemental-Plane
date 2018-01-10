@@ -11,13 +11,13 @@ public class PlayerElement : MonoBehaviour
     private Animator animator;
 
     // Whether the player can use elements
-    public bool ElementOn = false;
+    static public bool ElementOn = false;
 
     // Key to use elements and switch 
     private UIManager uiManager;
     public KeyCode ElementShiftKey;
     public KeyCode ElementAttackKey;
-    private int ElementNumber = 0;
+    static public int ElementNumber;
     private bool CanShoot = true;
 
     // ElementAir
@@ -43,6 +43,15 @@ public class PlayerElement : MonoBehaviour
         uiManager = GameObject.Find("Manager").GetComponent<UIManager>();
         PlayerFaceDirection = true;
         animator = GetComponent<Animator>();
+        if (ElementNumber == 1)
+        {
+            ElementAir(true);
+        }
+        else
+        {
+            ElementAir(false);
+        }
+
     }
 
     void FixedUpdate()
@@ -128,7 +137,7 @@ public class PlayerElement : MonoBehaviour
     // Elements
     void Element(GameObject Ele, float t,Vector2 vel)
     {
-        AudioSource.PlayClipAtPoint(shootSE, new Vector3(0, 0, 0));
+        
         if (!PlayerFaceDirection)
         {
             vel.x = -vel.x;
@@ -141,6 +150,7 @@ public class PlayerElement : MonoBehaviour
 
     IEnumerator ElementAttack()
     {
+        AudioSource.PlayClipAtPoint(shootSE, new Vector3(0, 0, 0));
         CanShoot = false;
         // Element Grass: 1
         if (ElementNumber == 2)
@@ -166,5 +176,17 @@ public class PlayerElement : MonoBehaviour
         CanShoot = true;
     }
 
+    
+    public int GetElementNumber()
+    {
+        return ElementNumber;
+    }
+
+    public void SetElementNumber(int value)
+    {
+        ElementNumber = value;
+        ElementOn = true;
+    }
+    
 }   
 

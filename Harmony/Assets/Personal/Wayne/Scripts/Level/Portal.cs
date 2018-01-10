@@ -11,7 +11,18 @@ public class Portal : MonoBehaviour {
         //when all enemies are healed
         if(collision.gameObject.tag == "Player" && GameObject.Find("Manager").GetComponent<LevelProcessManager>().enemyHealed >= requiredHealedEnemy)
         {
+            //int elementNumber = collision.gameObject.GetComponent<PlayerElement>().GetElementNumber();
             UnityEngine.SceneManagement.SceneManager.LoadScene(destinationScene);
+            //GameObject.Find("Player").GetComponent<PlayerElement>().SetElementNumber(elementNumber);
+            //save all the se
+            foreach(GameObject go in GameObject.FindObjectsOfType<UnityEngine.GameObject>())
+            {
+                if(go.name == "One shot audio")
+                {
+                    DontDestroyOnLoad(go);
+                }
+            }
+
         }
     }
 

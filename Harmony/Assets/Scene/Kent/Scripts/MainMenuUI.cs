@@ -9,13 +9,23 @@ public class MainMenuUI : MonoBehaviour {
 	public string MainMenuScene;
 	public string destinationScene;
 
+    public GameObject BGM;
+
     private void Start(){
         MainMenuCanvas.SetActive(true);
         CreditsCanvas.SetActive(false);
         InstructionCanvas.SetActive(false);
+
+        if(GameObject.Find("BGM(Clone)") == null)
+        {
+            GameObject bgm =  GameObject.Instantiate(BGM, new Vector3(0, 0, 0), Quaternion.identity);
+            DontDestroyOnLoad(bgm);
+        }
     }
     
     public void StartGame(){
+        PlayerElement.ElementNumber = 0;
+        PlayerElement.ElementOn = false;
 		UnityEngine.SceneManagement.SceneManager.LoadScene (destinationScene);
 	}
 

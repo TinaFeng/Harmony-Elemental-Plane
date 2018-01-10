@@ -20,6 +20,7 @@ public class EnemyState : MonoBehaviour {
     private bool healed = false;
 
     public AudioClip hurtSE;
+    public AudioClip healSE;
 
     private void Start()
     {
@@ -76,6 +77,7 @@ public class EnemyState : MonoBehaviour {
                 gameObject.tag = "Untagged";
                 levelManager.ChangeGemNumber(-1);
                 levelManager.ChangeHealedEnemyNumber(1);
+                AudioSource.PlayClipAtPoint(healSE, new Vector3(0, 0, 0));
                 StartCoroutine(HealColor());
             }
 

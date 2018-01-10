@@ -547,6 +547,7 @@ MonoBehaviour:
   InstructionCanvas: {fileID: 636455572}
   MainMenuScene: 
   destinationScene: Level1-1
+  BGM: {fileID: 1097137061962180, guid: 0e6bd96ee0523ca4fbe77ec96efe8592, type: 2}
 --- !u!1 &485237023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,8 +1441,8 @@ MonoBehaviour:
     - Wendy Wang\nArtist - Kim Nguyen\nSound/Writer - Sandra Soto\nUI Progammer/Designer
     - Kent Jitpatima\nDesign/Stuff - Ana Nguyen\n\u2606\u2606\u2606Officer Buddy -
     Tina Feng\u2606\u2606\u2606\n\nThe fire element, water element and monster bullet
-    are made(stole) by(from) the great artist Tina Feng!\n\nThanks for Playing!\nStill
-    work in progress!\n\n"
+    are made(stole) by(from) the great artist Tina Feng!\n\nthe BGM 8Bit Introduction
+    is made by Tristan Lohengrin\n\nThanks for Playing!\nStill work in progress!\n\n"
 --- !u!222 &1186174228
 CanvasRenderer:
   m_ObjectHideFlags: 0

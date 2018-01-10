@@ -93,6 +93,7 @@ MonoBehaviour:
   health: 20
   elementType: 0
   hurtSE: {fileID: 8300000, guid: 7a6eaa31004e1f5479f17b4297da0353, type: 3}
+  healSE: {fileID: 8300000, guid: 88aefd5f1eea2924e96018b4b83b85a2, type: 3}
 --- !u!114 &114545559852364186
 MonoBehaviour:
   m_ObjectHideFlags: 1

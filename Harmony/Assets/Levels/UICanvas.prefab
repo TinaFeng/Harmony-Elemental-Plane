@@ -245,7 +245,6 @@ GameObject:
   - component: {fileID: 4983966525314620}
   - component: {fileID: 114323112949646354}
   - component: {fileID: 114332434395756646}
-  - component: {fileID: 81448917683536206}
   - component: {fileID: 114410989290118372}
   m_Layer: 0
   m_Name: Manager
@@ -367,13 +366,6 @@ Transform:
   m_Father: {fileID: 224306033402813382}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &81448917683536206
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1883310607769028}
-  m_Enabled: 1
 --- !u!114 &114003613166300326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -554,15 +546,15 @@ MonoBehaviour:
   heartUI: {fileID: 114451717250650202}
   PauseUI: {fileID: 1757709910611432}
   gameOverUI: {fileID: 1584312895394804}
-  currentScene: 
+  currentScene: Level1-2
   gemUI: {fileID: 1220394040654286}
   elementSprites:
-  - {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 21300000, guid: 0d44bcb9e5f24454bb11858aeb7d53cb, type: 3}
   - {fileID: 21300000, guid: fb240451152550e4591636e8b8269405, type: 3}
   - {fileID: 21300000, guid: 37d6e57344c0f644daeccb3b0745c4e5, type: 3}
   - {fileID: 21300000, guid: 4ef8822570b4d9d4e9edae81ffc2c5b1, type: 3}
+  - {fileID: 21300000, guid: 0d44bcb9e5f24454bb11858aeb7d53cb, type: 3}
   playerElementUI: {fileID: 1631685865312640}
+  startWithElement: 1
 --- !u!114 &114332186742318546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -752,6 +744,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a192901a2886d447893bd60d9dc9dd5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenuCanvas: {fileID: 0}
+  CreditsCanvas: {fileID: 0}
+  InstructionCanvas: {fileID: 0}
   MainMenuScene: MainMenu
   destinationScene: 
 --- !u!114 &114451717250650202

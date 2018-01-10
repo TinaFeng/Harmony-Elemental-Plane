@@ -180,6 +180,10 @@ Prefab:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1567829376250172, guid: 28552b8107821c4479a6d3f3096e9c52, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28552b8107821c4479a6d3f3096e9c52, type: 2}
   m_IsPrefabParent: 0
@@ -277,6 +281,10 @@ Prefab:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1696223088052730, guid: cc34315e317e7ba419046cfc6e768f32, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc34315e317e7ba419046cfc6e768f32, type: 2}
   m_IsPrefabParent: 0
@@ -365,6 +373,42 @@ Transform:
   m_PrefabParentObject: {fileID: 4684160993323598, guid: 52522c6275a1fa24aa0d0ef8793ccaae,
     type: 2}
   m_PrefabInternal: {fileID: 956455751}
+--- !u!1 &1152421269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1152421270}
+  - component: {fileID: 1152421271}
+  m_Layer: 0
+  m_Name: audioListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1152421270
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1152421269}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1152421271
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1152421269}
+  m_Enabled: 1
 --- !u!1001 &1211419962
 Prefab:
   m_ObjectHideFlags: 0
@@ -475,6 +519,11 @@ Prefab:
     - target: {fileID: 4149901047490986, guid: c7a72467fb35cca4c8f1599aebc094b5, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114342541864164352, guid: c7a72467fb35cca4c8f1599aebc094b5,
+        type: 2}
+      propertyPath: requiredHealedEnemy
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c7a72467fb35cca4c8f1599aebc094b5, type: 2}
@@ -11161,6 +11210,11 @@ Prefab:
         type: 2}
       propertyPath: currentScene
       value: Level1-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114323112949646354, guid: a40370fa8c55540c2a4eb99164a61b26,
+        type: 2}
+      propertyPath: startWithElement
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a40370fa8c55540c2a4eb99164a61b26, type: 2}

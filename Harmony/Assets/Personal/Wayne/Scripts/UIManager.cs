@@ -18,10 +18,15 @@ public class UIManager : MonoBehaviour {
     public Sprite[] elementSprites;
     public GameObject playerElementUI;
 
+    public bool startWithElement;
     // Use this for initialization
     void Start () {
         PauseUI.SetActive(false);
-        playerElementUI.GetComponent<Image>().sprite = elementSprites[0];
+        if(startWithElement)
+        {
+            playerElementUI.GetComponent<Image>().sprite = elementSprites[GameObject.Find("Player").GetComponent<PlayerElement>().GetElementNumber() - 1];
+        }
+        
     }
 	
 	// Update is called once per frame
@@ -84,18 +89,18 @@ public class UIManager : MonoBehaviour {
     {
         if(element == element.fire)
         {
-            playerElementUI.GetComponent<Image>().sprite = elementSprites[1];
+            playerElementUI.GetComponent<Image>().sprite = elementSprites[3];
         }else if (element == element.air)
         {
-            playerElementUI.GetComponent<Image>().sprite = elementSprites[2];
+            playerElementUI.GetComponent<Image>().sprite = elementSprites[0];
         }
         else if (element == element.grass)
         {
-            playerElementUI.GetComponent<Image>().sprite = elementSprites[3];
+            playerElementUI.GetComponent<Image>().sprite = elementSprites[1];
         }
         else
         {
-            playerElementUI.GetComponent<Image>().sprite = elementSprites[4];
+            playerElementUI.GetComponent<Image>().sprite = elementSprites[2];
         }
     }
 
